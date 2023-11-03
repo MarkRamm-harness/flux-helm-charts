@@ -34,7 +34,6 @@ spec:
       - name: flux-cli
         image: {{ template "template.image" .Values.cli }}
         command: ["/usr/local/bin/flux", "check",  "--pre", "--namespace", {{ .Release.Namespace }}]
-        {{- with .Values.cli.resources }}
         resources: {{ toYaml . | nindent 10 }}
         {{- end }}
         {{- if .Values.cli.securityContext }}
